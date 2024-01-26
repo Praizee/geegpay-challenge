@@ -1,88 +1,209 @@
 import React from "react";
 import Link from "next/link";
+import { Flex, ProgressBar, Text } from "@tremor/react";
 
-import {
-  CardDescription,
-  CardTitle,
-  CardHeader,
-  CardContent,
-  Card,
-} from "@/components/ui/card";
-import { ResponsiveBar } from "@nivo/bar";
-import { ResponsiveScatterPlot } from "@nivo/scatterplot";
-import { ResponsiveLine } from "@nivo/line";
-import { ResponsivePie } from "@nivo/pie";
+import { CardTitle, CardHeader, CardContent, Card } from "@/components/ui/card";
+import OrderIcon from "@/assets/svg/OrderIcon";
+import OrderGraph from "@/assets/svg/OrderGraph";
+import IncreasePercentage from "@/assets/svg/IncreasePercentage";
+import DecreasePercentage from "@/assets/svg/DecreasePercentage";
+import RefundIcon from "@/assets/svg/RefundIcon";
+import RefundGraph from "@/assets/svg/RefundGraph";
+import SalesIcon from "@/assets/svg/SalesIcon";
+import SalesGraph from "@/assets/svg/SalesGraph";
+import IncomeIcon from "@/assets/svg/IncomeIcon";
+import IncomeGraph from "@/assets/svg/IncomeGraph";
+import CustomBarChart from "../others/CustomBarChart";
+import { BarChartGraph } from "../others/BarChartGraph";
+import OrdersTable from "../others/OrdersTable";
 
 const Dashboard = () => {
   return (
     <main className="flex flex-1 flex-col gap-4 p-4 md:gap-8 md:p-6 z-10">
-      <div className="grid gap-6">
+      <div className="space-y-6">
         {/* charts */}
-        <div className="grid md:grid-cols-3 gap-6">
-          <Card className="flex flex-col">
+        <div className="lg:flex gap-6">
+          <Card className="flex flex-1 flex-col ">
+            {/* max-w-[50rem] */}
             <CardHeader>
-              <CardDescription>Total Sales</CardDescription>
-              <CardTitle>$2389.00</CardTitle>
+              <CardTitle>Sales Trends</CardTitle>
             </CardHeader>
             <CardContent>
-              <StackedbarChart className="aspect-[4/3]" />
+              {/* <BarChartGraph className="aspect-[4/3]" /> */}
+              <CustomBarChart />
             </CardContent>
           </Card>
-          <Card>
-            <CardHeader>
-              <CardDescription>Sessions</CardDescription>
-              <CardTitle>345</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <DotChart className="aspect-[4/3]" />
-            </CardContent>
-          </Card>
-          <Card className="flex flex-col">
-            <CardHeader>
-              <CardDescription>Returning Customers</CardDescription>
-              <CardTitle>33.5%</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <GroupedbarChart className="aspect-[4/3]" />
-            </CardContent>
-          </Card>
+
+          <div className="flex-none grid md:grid-cols-2 gap-6">
+            {/* order */}
+            <div className="space-y-2 max-w-[16rem] bg-white dark:bg-black/50 border border-[#EDF2F7] dark:border-[#EDF2F7]/50 p-4 rounded-[0.875rem]">
+              <span className="flex gap-4 justify-between">
+                <OrderIcon className="w-5 h-5" />
+                <OrderGraph />
+              </span>
+              <p className="text-[#898989] dark:text-gray-20 font-medium text-lg">
+                Total Order
+              </p>
+              <p className="text-[#3A3F51] dark:text-gray-50 font-semibold text-2xl">
+                350
+              </p>
+              <span className="flex gap-4 justify-between">
+                <IncreasePercentage className="w-6 h-6" />
+                <p className="text-[#606060] dark:text-gray-100 text-sm">
+                  vs. previous month
+                </p>
+              </span>
+            </div>
+
+            {/* refunds */}
+            <div className="space-y-2 max-w-[16rem] bg-white dark:bg-black/50 border border-[#EDF2F7] dark:border-[#EDF2F7]/50 p-4 rounded-[0.875rem]">
+              <span className="flex gap-4 justify-between">
+                <RefundIcon className="w-5 h-5" />
+                <RefundGraph />
+              </span>
+              <p className="text-[#898989] dark:text-gray-20 font-medium text-lg">
+                Total Refund
+              </p>
+              <p className="text-[#3A3F51] dark:text-gray-50 font-semibold text-2xl">
+                270
+              </p>
+              <span className="flex gap-4 justify-between">
+                <DecreasePercentage className="w-6 h-6" />
+                <p className="text-[#606060] dark:text-gray-100 text-sm">
+                  vs. previous month
+                </p>
+              </span>
+            </div>
+
+            {/* sales */}
+            <div className="space-y-2 max-w-[16rem] bg-white dark:bg-black/50 border border-[#EDF2F7] dark:border-[#EDF2F7]/50 p-4 rounded-[0.875rem]">
+              <span className="flex gap-4 justify-between">
+                <SalesIcon className="w-5 h-5" />
+                <SalesGraph />
+              </span>
+              <p className="text-[#898989] dark:text-gray-20 font-medium text-lg">
+                Average Sales
+              </p>
+              <p className="text-[#3A3F51] dark:text-gray-50 font-semibold text-2xl">
+                1567
+              </p>
+              <span className="flex gap-4 justify-between">
+                <DecreasePercentage className="w-6 h-6" />
+                <p className="text-[#606060] dark:text-gray-100 text-sm">
+                  vs. previous month
+                </p>
+              </span>
+            </div>
+
+            {/* income */}
+            <div className="space-y-2 max-w-[16rem] bg-white dark:bg-black/50 border border-[#EDF2F7] dark:border-[#EDF2F7]/50 p-4 rounded-[0.875rem]">
+              <span className="flex gap-4 justify-between">
+                <IncomeIcon className="w-5 h-5" />
+                <IncomeGraph />
+              </span>
+              <p className="text-[#898989] dark:text-gray-20 font-medium text-lg">
+                Total Income
+              </p>
+              <p className="text-[#3A3F51] dark:text-gray-50 font-semibold text-2xl">
+                $350.000
+              </p>
+              <span className="flex gap-4 justify-between">
+                <IncreasePercentage className="w-6 h-6" />
+                <p className="text-[#606060] dark:text-gray-100 text-sm">
+                  vs. previous month
+                </p>
+              </span>
+            </div>
+          </div>
         </div>
-        <div className="grid md:grid-cols-3 gap-6">
-          <Card className="flex flex-col">
+
+        <div className="lg:flex gap-6">
+          <Card className="flex flex-1 flex-col">
+            {/* w-[50rem] */}
             <CardHeader>
-              <CardDescription>Visitors</CardDescription>
-              <CardTitle>3,456</CardTitle>
+              <CardTitle className="text-lg font-semibold flex justify-between">
+                Last Orders
+                <button className="text-lg text-[#34CAA5] font-medium">
+                  See All
+                </button>
+              </CardTitle>
             </CardHeader>
             <CardContent>
-              <LineChart className="aspect-[4/3]" />
+              {/* orders table */}
+              <OrdersTable />
             </CardContent>
           </Card>
-          <Card className="flex flex-col">
+
+          <Card className="flex flex-none flex-col min-w-[30rem]">
             <CardHeader>
-              <CardDescription>Page Views</CardDescription>
-              <CardTitle>12,345</CardTitle>
+              <CardTitle className="text-lg font-semibold flex justify-between">
+                Top Platform
+                <button className="text-[#34CAA5] font-medium">See All</button>
+              </CardTitle>
             </CardHeader>
-            <CardContent>
-              <LabelledpieChart className="aspect-[4/3]" />
-            </CardContent>
-          </Card>
-          <Card>
-            <CardHeader>
-              <CardDescription>Visitors</CardDescription>
-              <CardTitle>Top Referrers</CardTitle>
-            </CardHeader>
-            <CardContent className="grid gap-4">
-              <div className="flex items-center">
-                <div>google.com</div>
-                <div className="font-semibold ml-auto">3K</div>
+            <CardContent className="space-y-5">
+              <div className="space-y-2">
+                <p className="text-[#22242C] dark:text-gray-50 text-lg font-semibold">
+                  Book Bazaar
+                </p>
+                <ProgressBar value={50} color="indigo" tooltip="50" />
+                <span className="flex justify-between">
+                  <p className="text-[#525252] dark:text-gray-100 text-lg font-normal">
+                    {" "}
+                    $2,500,000
+                  </p>
+                  <p className="text-[#525252] dark:text-gray-100 text-lg font-normal">
+                    +15%
+                  </p>
+                </span>
               </div>
-              <div className="flex items-center">
-                <div>twitter.com</div>
-                <div className="font-semibold ml-auto">1.2K</div>
+
+              <div className="space-y-2">
+                <p className="text-[#22242C] dark:text-gray-50 text-lg font-semibold">
+                  Artisan Aisle
+                </p>
+                <ProgressBar value={35} color="cyan" tooltip="35" />
+                <span className="flex justify-between">
+                  <p className="text-[#525252] dark:text-gray-100 text-lg font-normal">
+                    {" "}
+                    $1,800,000
+                  </p>
+                  <p className="text-[#525252] dark:text-gray-100 text-lg font-normal">
+                    +10%
+                  </p>
+                </span>
               </div>
-              <div className="flex items-center">
-                <div>youtube.com</div>
-                <div className="font-semibold ml-auto">1.1K</div>
+
+              <div className="space-y-2">
+                <p className="text-[#22242C] dark:text-gray-50 text-lg font-semibold">
+                  Toy Troop
+                </p>
+                <ProgressBar value={25} color="yellow" tooltip="25" />
+                <span className="flex justify-between">
+                  <p className="text-[#525252] dark:text-gray-100 text-lg font-normal">
+                    {" "}
+                    $1,200,000
+                  </p>
+                  <p className="text-[#525252] dark:text-gray-100 text-lg font-normal">
+                    +8%
+                  </p>
+                </span>
+              </div>
+
+              <div className="space-y-2">
+                <p className="text-[#22242C] dark:text-gray-50 text-lg font-semibold">
+                  XStore
+                </p>
+                <ProgressBar value={15} color="red" tooltip="15" />
+                <span className="flex justify-between">
+                  <p className="text-[#525252] dark:text-gray-100 text-lg font-normal">
+                    {" "}
+                    $800,000
+                  </p>
+                  <p className="text-[#525252] dark:text-gray-100 text-lg font-normal">
+                    +6%
+                  </p>
+                </span>
               </div>
             </CardContent>
           </Card>
@@ -103,324 +224,7 @@ const Dashboard = () => {
         </p>
       </div>
     </main>
-    // <div
-    //   className="p-8 min-h-min bg-white rounded-2xl border border-[#EDF2F7]"
-    //   style={{
-    //     minHeight: 360,
-    //   }}
-    // >
-    //   Bill is a cat.
-    // </div>
   );
 };
 
 export default Dashboard;
-
-function DotChart(props) {
-  return (
-    <div {...props}>
-      <ResponsiveScatterPlot
-        data={[
-          {
-            id: "Desktop",
-            data: [
-              { x: "Jan", y: 43 },
-              { x: "Feb", y: 137 },
-              { x: "Mar", y: 61 },
-              { x: "Apr", y: 145 },
-              { x: "May", y: 26 },
-              { x: "Jun", y: 154 },
-            ],
-          },
-          {
-            id: "Mobile",
-            data: [
-              { x: "Jan", y: 60 },
-              { x: "Feb", y: 48 },
-              { x: "Mar", y: 177 },
-              { x: "Apr", y: 78 },
-              { x: "May", y: 96 },
-              { x: "Jun", y: 204 },
-            ],
-          },
-        ]}
-        margin={{ top: 10, right: 10, bottom: 40, left: 40 }}
-        xScale={{ type: "point" }}
-        yScale={{ type: "linear" }}
-        blendMode="multiply"
-        axisTop={null}
-        axisRight={null}
-        axisBottom={{
-          tickSize: 0,
-          tickPadding: 16,
-        }}
-        axisLeft={{
-          tickSize: 0,
-          tickValues: 5,
-          tickPadding: 16,
-        }}
-        colors={["#2563eb", "#e11d48"]}
-        useMesh={true}
-        gridYValues={6}
-        theme={{
-          tooltip: {
-            chip: {
-              borderRadius: "9999px",
-            },
-            container: {
-              fontSize: "12px",
-              textTransform: "capitalize",
-              borderRadius: "6px",
-            },
-          },
-          grid: {
-            line: {
-              stroke: "#f3f4f6",
-            },
-          },
-        }}
-        role="application"
-      />
-    </div>
-  );
-}
-
-function GroupedbarChart(props) {
-  return (
-    <div {...props}>
-      <ResponsiveBar
-        data={[
-          { name: "Jan", desktop: 111, mobile: 99 },
-          { name: "Feb", desktop: 157, mobile: 87 },
-          { name: "Mar", desktop: 129, mobile: 89 },
-          { name: "Apr", desktop: 187, mobile: 151 },
-          { name: "May", desktop: 119, mobile: 127 },
-          { name: "Jun", desktop: 20, mobile: 121 },
-        ]}
-        keys={["desktop", "mobile"]}
-        indexBy="name"
-        groupMode="grouped"
-        margin={{ top: 0, right: 0, bottom: 40, left: 40 }}
-        padding={0.3}
-        colors={["#2563eb", "#e11d48"]}
-        axisBottom={{
-          tickSize: 0,
-          tickPadding: 16,
-        }}
-        axisLeft={{
-          tickSize: 0,
-          tickValues: 4,
-          tickPadding: 16,
-        }}
-        gridYValues={4}
-        theme={{
-          tooltip: {
-            chip: {
-              borderRadius: "9999px",
-            },
-            container: {
-              fontSize: "12px",
-              textTransform: "capitalize",
-              borderRadius: "6px",
-            },
-          },
-          grid: {
-            line: {
-              stroke: "#f3f4f6",
-            },
-          },
-        }}
-        tooltipLabel={({ id }) => `${id}`}
-        enableLabel={false}
-        role="application"
-        ariaLabel="A grouped bar chart"
-      />
-    </div>
-  );
-}
-
-function LabelledpieChart(props) {
-  return (
-    <div {...props}>
-      <ResponsivePie
-        data={[
-          { id: "Jan", value: 111 },
-          { id: "Feb", value: 157 },
-          { id: "Mar", value: 129 },
-          { id: "Apr", value: 150 },
-          { id: "May", value: 119 },
-          { id: "Jun", value: 72 },
-        ]}
-        sortByValue
-        margin={{ top: 30, right: 50, bottom: 30, left: 50 }}
-        innerRadius={0.5}
-        padAngle={1}
-        cornerRadius={3}
-        activeOuterRadiusOffset={2}
-        borderWidth={1}
-        arcLinkLabelsThickness={1}
-        enableArcLabels={false}
-        colors={["#2563eb"]}
-        theme={{
-          tooltip: {
-            chip: {
-              borderRadius: "9999px",
-            },
-            container: {
-              fontSize: "12px",
-              textTransform: "capitalize",
-              borderRadius: "6px",
-            },
-          },
-        }}
-        role="application"
-      />
-    </div>
-  );
-}
-
-function LineChart(props) {
-  return (
-    <div {...props}>
-      <ResponsiveLine
-        data={[
-          {
-            id: "Desktop",
-            data: [
-              { x: "Jan", y: 43 },
-              { x: "Feb", y: 137 },
-              { x: "Mar", y: 61 },
-              { x: "Apr", y: 145 },
-              { x: "May", y: 26 },
-              { x: "Jun", y: 154 },
-            ],
-          },
-          {
-            id: "Mobile",
-            data: [
-              { x: "Jan", y: 60 },
-              { x: "Feb", y: 48 },
-              { x: "Mar", y: 177 },
-              { x: "Apr", y: 78 },
-              { x: "May", y: 96 },
-              { x: "Jun", y: 204 },
-            ],
-          },
-        ]}
-        margin={{ top: 10, right: 10, bottom: 40, left: 40 }}
-        xScale={{
-          type: "point",
-        }}
-        yScale={{
-          type: "linear",
-        }}
-        axisTop={null}
-        axisRight={null}
-        axisBottom={{
-          tickSize: 0,
-          tickPadding: 16,
-        }}
-        axisLeft={{
-          tickSize: 0,
-          tickValues: 5,
-          tickPadding: 16,
-        }}
-        colors={["#2563eb", "#e11d48"]}
-        pointSize={6}
-        useMesh={true}
-        gridYValues={6}
-        theme={{
-          tooltip: {
-            chip: {
-              borderRadius: "9999px",
-            },
-            container: {
-              fontSize: "12px",
-              textTransform: "capitalize",
-              borderRadius: "6px",
-            },
-          },
-          grid: {
-            line: {
-              stroke: "#f3f4f6",
-            },
-          },
-        }}
-        role="application"
-      />
-    </div>
-  );
-}
-
-function SearchIcon(props) {
-  return (
-    <svg
-      {...props}
-      xmlns="http://www.w3.org/2000/svg"
-      width="24"
-      height="24"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    >
-      <circle cx="11" cy="11" r="8" />
-      <path d="m21 21-4.3-4.3" />
-    </svg>
-  );
-}
-
-function StackedbarChart(props) {
-  return (
-    <div {...props}>
-      <ResponsiveBar
-        data={[
-          { name: "Jan", desktop: 111, mobile: 99 },
-          { name: "Feb", desktop: 157, mobile: 87 },
-          { name: "Mar", desktop: 129, mobile: 89 },
-          { name: "Apr", desktop: 187, mobile: 151 },
-          { name: "May", desktop: 119, mobile: 127 },
-          { name: "Jun", desktop: 20, mobile: 121 },
-        ]}
-        keys={["desktop", "mobile"]}
-        indexBy="name"
-        margin={{ top: 0, right: 0, bottom: 40, left: 40 }}
-        padding={0.3}
-        colors={["#2563eb", "#e11d48"]}
-        axisBottom={{
-          tickSize: 0,
-          tickPadding: 16,
-        }}
-        axisLeft={{
-          tickSize: 0,
-          tickValues: 4,
-          tickPadding: 16,
-        }}
-        gridYValues={4}
-        theme={{
-          tooltip: {
-            chip: {
-              borderRadius: "9999px",
-            },
-            container: {
-              fontSize: "12px",
-              textTransform: "capitalize",
-              borderRadius: "6px",
-            },
-          },
-          grid: {
-            line: {
-              stroke: "#f3f4f6",
-            },
-          },
-        }}
-        tooltipLabel={({ id }) => `${id}`}
-        enableLabel={false}
-        role="application"
-        ariaLabel="A stacked bar chart"
-      />
-    </div>
-  );
-}

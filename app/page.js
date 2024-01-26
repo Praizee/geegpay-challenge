@@ -1,11 +1,12 @@
 import DashboardLayout from "@/components/layout/DashboardLayout";
+import { ThemeProvider } from "@/components/others/ThemeProvider";
 import React from "react";
 
-const page = () => {
+const page = ({ pageProps }) => {
   return (
-    <>
-      <DashboardLayout />
-    </>
+    <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+      <DashboardLayout {...pageProps} />
+    </ThemeProvider>
   );
 };
 

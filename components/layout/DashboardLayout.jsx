@@ -16,7 +16,6 @@ import {
 
 import Logo from "@/assets/svg/Logo";
 import DashboardIcon from "@/assets/svg/DashboardIcon";
-
 import Avatar from "@/assets/png/profile.png";
 import Trend from "@/assets/svg/Trend";
 import People from "@/assets/svg/People";
@@ -46,11 +45,11 @@ const DashboardLayout = () => {
   };
 
   return (
-    <div className="flex min-h-screen w-full">
+    <div className="flex min-h-screen w-full !bg-[#FAFAFA] dark:!bg-gray-800 text-[#26282C] dark:text-gray-50">
       {/* sider */}
       <div
-        className={`border-r border-[#E5EAEF] dark:border-white/40 top-0 bottom-0 left-0 sticky h-screen overflow-auto hidden lg:block bg-[#F7F8FA] dark:bg-gray-800 transition-all duration-300 ease-in-out ${
-          isSidebarCollapsed ? "w-20" : "w-[17.5rem]"
+        className={`border-r border-[#E5EAEF] dark:border-white/40 top-0 bottom-0  left-0 sticky h-screen overflow-auto hidden lg:block bg-[#F7F8FA] dark:bg-gray-800 transition-all duration-300 ease-in-out ${
+          isSidebarCollapsed ? "w-20" : "w-[14rem]"
         }`}
       >
         <div className="flex h-full max-h-screen flex-col gap-2">
@@ -66,7 +65,7 @@ const DashboardLayout = () => {
                   className="flex items-center gap-3 text-base rounded-lg px-3 py-2 text-gray-500 transition-all hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-50"
                   href="#"
                 >
-                  <DashboardIcon className="h-4 w-4 dark:border" />
+                  <DashboardIcon className="h-4 w-4" />
                   <p
                     className={`${isSidebarCollapsed ? "hidden" : "block"}
                   `}
@@ -154,9 +153,6 @@ const DashboardLayout = () => {
                   <p className="sr-only">Expand</p>
                 </Link>
                 {/* end of expand/collapse */}
-                <div className="flex lg:hidden items-center lg:justify-center">
-                  <SideDrawer />
-                </div>
                 <Link
                   className="flex items-center gap-3 text-base rounded-lg px-3 py-2 text-gray-500 transition-all hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-50"
                   href="#"
@@ -182,24 +178,26 @@ const DashboardLayout = () => {
                   </p>
                 </Link>
               </div>
+              <div className="h-8 w-full bg-white dark:bg-black/50" />
             </nav>
           </div>
-          {/* end of sider */}
         </div>
       </div>
+      {/* end of sider */}
 
       <div className="flex flex-col flex-1">
         {/* navbar */}
-        <header className="flex h-16 items-center sticky top-0 z-30 gap-4 border-b border-[#E5EAEF] dark:border-white/40 px-6 bg-[#F7F8FA] dark:bg-gray-800">
-          <Link className="lg:hidden" href="/">
-            <Logo className="h-10 w-10" />
-            <span className="sr-only">Home</span>
-          </Link>
+        <header className="flex h-16 items-center sticky top-0 z-30 gap-4 border-b border-[#E5EAEF] dark:border-white/40 px-4 bg-[#F7F8FA] dark:bg-gray-800">
+          <div className="lg:hidden flex gap-2">
+            <SideDrawer />
+            <Link href="/">
+              <Logo className="h-10 w-10" />
+              <span className="sr-only">Home</span>
+            </Link>
+          </div>
 
           <div className="flex items-center justify-between w-full">
-            <h1 className="font-semibold text-lg md:text-xl text-current dark:text-gray-50">
-              Dashboard
-            </h1>
+            <h1 className="font-semibold text-lg md:text-xl">Dashboard</h1>
 
             <div className="flex gap-4">
               <form className="w-full invisible md:visible">
@@ -216,7 +214,7 @@ const DashboardLayout = () => {
 
               <div className="w-full flex gap-2 invisible lg:visible py-3">
                 <LuCalendarDays className="h-6 w-6 text-[#26282C] dark:text-gray-50" />
-                <p className="text-[#26282C] dark:text-gray-50">
+                <p className="text-[#26282C] dark:text-gray-50 font-medium">
                   {date.toLocaleString("en-US", {
                     month: "long",
                     day: "2-digit",
@@ -225,10 +223,10 @@ const DashboardLayout = () => {
                 </p>
               </div>
 
-              <div className="py-2 mt-2 md:mt-0">
-                <Button className="h-8 w-8" size="icon" variant="outline">
-                  {/* <Notification className="h-4 w-4 text-gray-500 transition-all hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-50" /> */}
-                  <HiOutlineBell className="h-6 w-6 text-[#E2A640] transition-all hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-50" />
+              <div className="py-1 mt-2 md:mt-0">
+                <Button className="h-10 w-10" size="icon" variant="outline">
+                  {/* <Notification className="h-4 w-4 text-[#0D062D] transition-all hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-50" /> */}
+                  <HiOutlineBell className="h-6 w-6 text-[#0D062D] bg-transparent transition-all hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-50" />
                   <span className="sr-only">Toggle notifications</span>
                 </Button>
               </div>
@@ -302,117 +300,3 @@ function SearchIcon(props) {
 }
 
 export default DashboardLayout;
-
-// "use client";
-
-// import React, { useState } from "react";
-// import Link from "next/link";
-// import { AiOutlinePieChart } from "react-icons/ai";
-// import { Layout, Menu, theme } from "antd";
-// import Calendar from "@/assets/svg/Calendar";
-// import DashboardIcon from "@/assets/svg/DashboardIcon";
-// import Dashboard from "../dashboard/Dashboard";
-
-// const { Header, Content, Footer, Sider } = Layout;
-
-// function getItem(label, key, icon, children) {
-//   return {
-//     key,
-//     icon,
-//     children,
-//     label,
-//   };
-// }
-// const items = [
-//   getItem("Category", "1", <DashboardIcon />),
-//   getItem("Trends", "2", <AiOutlinePieChart />),
-//   getItem("Users", "3", <AiOutlinePieChart />),
-//   getItem("Item 4", "4", <AiOutlinePieChart />),
-//   getItem("Item 5", "5", <AiOutlinePieChart />),
-//   getItem("Item 6", "6", <AiOutlinePieChart />),
-//   getItem("Item 7", "7", <AiOutlinePieChart />),
-//   getItem("Item 8", "8", <AiOutlinePieChart />),
-// ];
-
-// const DashboardLayout = () => {
-//   const date = new Date();
-
-//   const [collapsed, setCollapsed] = useState(false);
-
-//   //   const {
-//   //     token: { colorBgContainer, borderRadiusLG },
-//   //   } = theme.useToken();
-
-//   return (
-//     <Layout className="min-h-screen">
-//       <Sider
-//         className="bg-inherit top-0 bottom-0 left-0 sticky h-screen overflow-auto bg-[#F7F8FA]"
-//         breakpoint="lg"
-//         // collapsedWidth="0"
-//         collapsible
-//         collapsed={collapsed}
-//         onCollapse={(value) => setCollapsed(value)}
-//       >
-//         <div className="p-4 mx-auto flex items-center w-full bg-[#FAFAFA]">
-//           <div>
-//             <svg
-//               xmlns="http://www.w3.org/2000/svg"
-//               width="40"
-//               height="40"
-//               viewBox="0 0 40 40"
-//               fill="none"
-//             >
-//               <path
-//                 fill-rule="evenodd"
-//                 clip-rule="evenodd"
-//                 d="M20 40C31.0457 40 40 31.0457 40 20C40 8.95431 31.0457 0 20 0C8.95429 0 0 8.95431 0 20C0 31.0457 8.95429 40 20 40ZM26.2393 9.31684C26.543 8.23805 25.4961 7.60013 24.54 8.2813L11.1931 17.7896C10.1562 18.5283 10.3193 20 11.4381 20H14.9527V19.9728H21.8025L16.2212 21.9421L13.7607 30.6832C13.457 31.762 14.5038 32.3999 15.46 31.7187L28.8069 22.2105C29.8438 21.4718 29.6806 20 28.5619 20H23.2321L26.2393 9.31684Z"
-//                 fill="#34CAA5"
-//               />
-//             </svg>
-//           </div>
-//         </div>
-
-//         <Menu
-//           className="bg-inherit"
-//           //   theme="light"
-//           defaultSelectedKeys={["1"]}
-//           mode="inline"
-//           items={items}
-//         />
-//       </Sider>
-//       <Layout>
-//         <Header className="sticky top-0 z-10 w-full flex items-center px-2 h-16 bg-inherit border-b border-[#A3A3A3]/50">
-//           <div className="flex justify-between px-4">
-//             <div>
-//               <h1 className="text-xl text-black font-semibold">Dashboard</h1>
-//             </div>
-//             <span className="flex gap-2 py-1">
-//               <Calendar />
-//               <p className="text-black font-medium text-sm">
-//                 {date.toLocaleString("en-US", {
-//                   month: "long",
-//                   day: "2-digit",
-//                   year: "numeric",
-//                 })}
-//               </p>
-//             </span>
-//           </div>
-//         </Header>
-//         <Content className="p-4">
-//           <Dashboard />
-//         </Content>
-//         <Footer
-//           style={{
-//             textAlign: "center",
-//           }}
-//         >
-//           Geegpay ©{new Date().getFullYear()} Created by{" "}
-//           <Link href="https://stephen-adeniji.vercel.app/" target="_blank">
-//             Stephen Adeniji
-//           </Link>
-//         </Footer>
-//       </Layout>
-//     </Layout>
-//   );
-// };
-// export default DashboardLayout;

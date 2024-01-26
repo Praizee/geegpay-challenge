@@ -24,9 +24,17 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <body className={`${Jarkata.className} !bg-[#FAFAFA] dark:!bg-gray-800`}>
-        <ThemeProvider>{children}</ThemeProvider>
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="light"
+          enableSystem
+          disableTransitionOnChange
+        >
+          {/* light, dark, system */}
+          {children}
+        </ThemeProvider>
       </body>
     </html>
   );
