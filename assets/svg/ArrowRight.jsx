@@ -8,6 +8,7 @@ const ArrowRight = () => {
       height="24"
       viewBox="0 0 24 24"
       fill="none"
+      className="hover:scale-110 animation duration-200"
     >
       <path
         d="M8.5 12H14.5"

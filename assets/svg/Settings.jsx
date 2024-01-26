@@ -8,6 +8,7 @@ const Settings = () => {
       height="24"
       viewBox="0 0 24 24"
       fill="none"
+      className="hover:scale-110 animation duration-200"
     >
       <path
         d="M15 12C15 10.34 13.66 9 12 9C10.34 9 9 10.34 9 12C9 13.66 10.34 15 12 15C12.41 15 12.81 14.92 13.17 14.76"

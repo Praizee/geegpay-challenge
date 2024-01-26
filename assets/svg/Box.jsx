@@ -8,6 +8,7 @@ const Box = () => {
       height="24"
       viewBox="0 0 24 24"
       fill="none"
+      className="hover:scale-110 animation duration-200"
     >
       <path
         d="M3.16992 7.44006L11.9999 12.55L20.7699 7.47003"
