@@ -8,7 +8,7 @@ import {
   TableBody,
   Table,
 } from "@/components/ui/table";
-import { AvatarFallback, Avatar } from "@/components/ui/avatar";
+import { Avatar } from "@/components/ui/avatar";
 
 import U1 from "../../assets/png/U1.png";
 import U2 from "../../assets/png/U2.png";
@@ -52,7 +52,6 @@ const OrdersTable = () => {
                   height={20}
                   className="w-auto"
                 />
-                <AvatarFallback>U1</AvatarFallback>
               </Avatar>
               <p className="py-1 text-base text-[#3A3F51] dark:text-gray-100 font-medium">
                 Marcus Bergson
@@ -85,7 +84,6 @@ const OrdersTable = () => {
                   height={20}
                   className="w-auto"
                 />
-                <AvatarFallback>U2</AvatarFallback>
               </Avatar>
               <p className="py-1 text-base text-[#3A3F51] dark:text-gray-100 font-medium">
                 Jaydon Vaccaro
@@ -118,7 +116,6 @@ const OrdersTable = () => {
                   height={20}
                   className="w-auto"
                 />
-                <AvatarFallback>U3</AvatarFallback>
               </Avatar>
               <p className="py-1 text-base text-[#3A3F51] dark:text-gray-100 font-medium">
                 Corey Schleifer
@@ -151,7 +148,6 @@ const OrdersTable = () => {
                   height={20}
                   className="w-auto"
                 />
-                <AvatarFallback>U4</AvatarFallback>
               </Avatar>
               <p className="py-1 text-base text-[#3A3F51] dark:text-gray-100 font-medium">
                 Cooper Press
@@ -184,7 +180,6 @@ const OrdersTable = () => {
                   height={20}
                   className="w-auto"
                 />
-                <AvatarFallback>U5</AvatarFallback>
               </Avatar>
               <p className="py-1 text-base text-[#3A3F51] dark:text-gray-100 font-medium">
                 Phillip Lubin
