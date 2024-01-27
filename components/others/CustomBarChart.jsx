@@ -35,6 +35,7 @@ export const options = {
       grid: {
         display: true,
       },
+      max: 50000, // Set a fixed maximum value for the y-axis
     },
   },
   elements: {
@@ -78,8 +79,17 @@ export const data = {
     {
       label: "Monthly Sales",
       data: customData,
-      backgroundColor:
-        "linear-gradient(180deg, #34CAA5 0%, rgba(52, 202, 165, 0.00) 100%)",
+      backgroundColor: (context) => {
+        const gradient = context.chart.ctx.createLinearGradient(
+          0,
+          0,
+          0,
+          context.chart.height
+        );
+        gradient.addColorStop(0, "#34CAA5"); // Dark color at the top
+        gradient.addColorStop(1, "rgba(52, 202, 165, 0.00)"); // Transparent color at the bottom
+        return gradient;
+      },
       borderColor: "#34CAA5", // Border color for rounded bars
       borderWidth: 1, // Border width for rounded bars
     },
@@ -91,3 +101,11 @@ const CustomBarChart = () => {
 };
 
 export default CustomBarChart;
+
+// 'plain ' green fill
+
+// backgroundColor:
+//         "linear-gradient(180deg, #34CAA5 0%, rgba(52, 202, 165, 0.00) 100%)",
+//       borderColor: "#34CAA5", // Border color for rounded bars
+//       borderWidth: 1, // Border width for rounded bars
+//     },

@@ -77,21 +77,39 @@ const DashboardLayout = () => {
           ></path>
         </svg>
       ),
-      // <DashboardIcon className="h-4 w-4" />
+      title: "Dashboard",
+      // <DashboardIcon className="h-4 w-4" /> //disabled cause  the dark classes 'breaks' it, doesn't display
     },
-    { id: "trends", label: "Trends", icon: <Trend className="h-4 w-4" /> },
+    {
+      id: "trends",
+      label: "Trends",
+      icon: <Trend className="h-4 w-4" />,
+      title: "Trends",
+    },
     {
       id: "customers",
       label: "Customers",
       icon: <People className="h-4 w-4" />,
+      title: "Customers",
     },
-    { id: "products", label: "Products", icon: <Box className="h-4 w-4" /> },
+    {
+      id: "products",
+      label: "Products",
+      icon: <Box className="h-4 w-4" />,
+      title: "Products",
+    },
     {
       id: "discounts",
       label: "Discounts",
       icon: <Discount className="h-4 w-4" />,
+      title: "Discounts",
     },
-    { id: "info", label: "Info", icon: <InfoIcon className="h-4 w-4" /> },
+    {
+      id: "info",
+      label: "Info",
+      icon: <InfoIcon className="h-4 w-4" />,
+      title: "Info",
+    },
     // Add more links as needed
   ];
 
@@ -128,6 +146,7 @@ const DashboardLayout = () => {
                         : ""
                     }`}
                     href="#"
+                    title={link.title}
                     onClick={() => handleLinkClick(link.id)}
                   >
                     {link.icon}
@@ -147,6 +166,7 @@ const DashboardLayout = () => {
                   className={`lg:flex items-center w-max hidden gap-3 rounded-lg px-3 py-2 text-gray-500 transition-all hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-50 rotate-${rotation}`}
                   href="#"
                   onClick={handleClick}
+                  title="Expand/Collapse"
                 >
                   <ArrowRight
                     className={`h-4 w-4 ${
@@ -163,6 +183,7 @@ const DashboardLayout = () => {
                       : ""
                   }`}
                   href="#"
+                  title="Settings"
                   onClick={() => handleLinkClick("settings")}
                 >
                   <Settings className="h-4 w-4" />
@@ -177,6 +198,7 @@ const DashboardLayout = () => {
                       : ""
                   }`}
                   href="#"
+                  title="Logout"
                   onClick={() => handleLinkClick("logout")}
                 >
                   <Logout className="h-4 w-4" />
