@@ -18,43 +18,44 @@ import OrdersTable from "../others/OrdersTable";
 
 const Dashboard = () => {
   return (
-    <main className="fle flex-1 flex-co gap-4 p-4 md:gap-8 md:p-6 z-10">
-      <div className="space-y-6">
-        {/* charts */}
-        <div className="lg:flex gap-6 space-y-6 lg:space-y-0">
-          <Card className="flex flex-1 flex-col ">
-            {/* max-w-[50rem] */}
-            <CardHeader>
-              <CardTitle className="text-lg font-semibold text-[#26282C] dark:text-gray-50 flex justify-between">
-                Sales Trends
-                <span className="space-x-2 text-sm font-medium">
-                  <label for="period">Sort by:</label>
-                  <select
-                    name="period"
-                    id="period"
-                    className="bg-transparent  border border-[#E1DFDF] dark:border-gray-100 rounded-3xl px-3 py-1 text-sm font-medium"
-                  >
-                    <option value="weekly" className="dark:bg-gray-800">
-                      Weekly
-                    </option>
-                    <option value="monthly" className="dark:bg-gray-800">
-                      Monthly
-                    </option>
-                    <option value="yearly" className="dark:bg-gray-800">
-                      Yearly
-                    </option>
-                  </select>
-                </span>
-              </CardTitle>
-            </CardHeader>
-            <CardContent>
-              <CustomBarChart />
-            </CardContent>
-          </Card>
+    <main className="p-4 md:p-6">
+      {/* flex-1 gap-4 p-4 md:gap-8 md:p-6 z-10 */}
+      <div className="grid grid-cols-2 gap-4">
+        {/* chart */}
+        <Card className="col-span-2 lg:col-span-1">
+          <CardHeader>
+            <CardTitle className="text-lg font-semibold text-[#26282C] dark:text-gray-50 flex justify-between">
+              Sales Trends
+              <span className="space-x-2 text-sm font-medium">
+                <label for="period">Sort by:</label>
+                <select
+                  name="period"
+                  id="period"
+                  className="bg-transparent  border border-[#E1DFDF] dark:border-gray-100 rounded-3xl px-3 py-1 text-sm font-medium"
+                >
+                  <option value="weekly" className="dark:bg-gray-800">
+                    Weekly
+                  </option>
+                  <option value="monthly" className="dark:bg-gray-800">
+                    Monthly
+                  </option>
+                  <option value="yearly" className="dark:bg-gray-800">
+                    Yearly
+                  </option>
+                </select>
+              </span>
+            </CardTitle>
+          </CardHeader>
+          <CardContent>
+            {/* custom bar chart */}
+            <CustomBarChart />
+          </CardContent>
+        </Card>
 
-          <div className="flex-none lg:mt-0 grid grid-cols-2 gap-6">
+        <div className="col-span-2 lg:col-span-1">
+          <div className="grid md:grid-cols-2 gap-6 h-full">
             {/* order */}
-            <div className="space-y-2 max-w-[16rem] bg-white dark:bg-black/50 border border-[#EDF2F7] dark:border-[#EDF2F7]/50 p-4 rounded-[0.875rem]">
+            <div className="flex flex-col justify-between gap-2 bg-white dark:bg-black/50 border border-[#EDF2F7] dark:border-[#EDF2F7]/50 p-4 rounded-[0.875rem]">
               <span className="flex gap-4 justify-between">
                 <OrderIcon className="w-5 h-5" />
                 <OrderGraph />
@@ -74,7 +75,7 @@ const Dashboard = () => {
             </div>
 
             {/* refunds */}
-            <div className="space-y-2 max-w-[16rem] bg-white dark:bg-black/50 border border-[#EDF2F7] dark:border-[#EDF2F7]/50 p-4 rounded-[0.875rem]">
+            <div className="flex flex-col justify-between gap-2 bg-white dark:bg-black/50 border border-[#EDF2F7] dark:border-[#EDF2F7]/50 p-4 rounded-[0.875rem]">
               <span className="flex gap-4 justify-between">
                 <RefundIcon className="w-5 h-5" />
                 <RefundGraph />
@@ -94,7 +95,7 @@ const Dashboard = () => {
             </div>
 
             {/* sales */}
-            <div className="space-y-2 max-w-[16rem] bg-white dark:bg-black/50 border border-[#EDF2F7] dark:border-[#EDF2F7]/50 p-4 rounded-[0.875rem]">
+            <div className="flex flex-col justify-between gap-2 bg-white dark:bg-black/50 border border-[#EDF2F7] dark:border-[#EDF2F7]/50 p-4 rounded-[0.875rem]">
               <span className="flex gap-4 justify-between">
                 <SalesIcon className="w-5 h-5" />
                 <SalesGraph />
@@ -114,7 +115,7 @@ const Dashboard = () => {
             </div>
 
             {/* income */}
-            <div className="space-y-2 max-w-[16rem] bg-white dark:bg-black/50 border border-[#EDF2F7] dark:border-[#EDF2F7]/50 p-4 rounded-[0.875rem]">
+            <div className="flex flex-col justify-between gap-2 bg-white dark:bg-black/50 border border-[#EDF2F7] dark:border-[#EDF2F7]/50 p-4 rounded-[0.875rem]">
               <span className="flex gap-4 justify-between">
                 <IncomeIcon className="w-5 h-5" />
                 <IncomeGraph />
@@ -135,97 +136,94 @@ const Dashboard = () => {
           </div>
         </div>
 
-        <div className="lg:flex gap-6 space-y-6 lg:space-y-0">
-          <Card className="flex flex-1 flex-col">
-            {/* w-[50rem] */}
-            <CardHeader>
-              <CardTitle className="text-lg font-semibold flex justify-between">
-                Last Orders
-                <button className="text-lg text-[#34CAA5] font-medium">
-                  See All
-                </button>
-              </CardTitle>
-            </CardHeader>
-            <CardContent>
-              {/* orders table */}
-              <OrdersTable />
-            </CardContent>
-          </Card>
+        <Card className="col-span-2 md:col-span-1">
+          <CardHeader>
+            <CardTitle className="text-lg font-semibold flex justify-between">
+              Last Orders
+              <button className="text-lg text-[#34CAA5] font-medium">
+                See All
+              </button>
+            </CardTitle>
+          </CardHeader>
+          <CardContent>
+            {/* orders table */}
+            <OrdersTable />
+          </CardContent>
+        </Card>
 
-          <Card className="flex flex-none flex-col min-w-[30rem]">
-            <CardHeader>
-              <CardTitle className="text-lg font-semibold flex justify-between">
-                Top Platform
-                <button className="text-[#34CAA5] font-medium">See All</button>
-              </CardTitle>
-            </CardHeader>
-            <CardContent className="space-y-5">
-              <div className="space-y-2">
-                <p className="text-[#22242C] dark:text-gray-50 text-lg font-semibold">
-                  Book Bazaar
+        <Card className="col-span-2 md:col-span-1">
+          <CardHeader>
+            <CardTitle className="text-lg font-semibold flex justify-between">
+              Top Platform
+              <button className="text-[#34CAA5] font-medium">See All</button>
+            </CardTitle>
+          </CardHeader>
+          <CardContent className="space-y-5">
+            <div className="space-y-2">
+              <p className="text-[#22242C] dark:text-gray-50 text-lg font-semibold">
+                Book Bazaar
+              </p>
+              <ProgressBar value={50} color="indigo" tooltip="50" />
+              <span className="flex justify-between">
+                <p className="text-[#525252] dark:text-gray-100 text-lg font-normal">
+                  {" "}
+                  $2,500,000
                 </p>
-                <ProgressBar value={50} color="indigo" tooltip="50" />
-                <span className="flex justify-between">
-                  <p className="text-[#525252] dark:text-gray-100 text-lg font-normal">
-                    {" "}
-                    $2,500,000
-                  </p>
-                  <p className="text-[#525252] dark:text-gray-100 text-lg font-normal">
-                    +15%
-                  </p>
-                </span>
-              </div>
+                <p className="text-[#525252] dark:text-gray-100 text-lg font-normal">
+                  +15%
+                </p>
+              </span>
+            </div>
 
-              <div className="space-y-2">
-                <p className="text-[#22242C] dark:text-gray-50 text-lg font-semibold">
-                  Artisan Aisle
+            <div className="space-y-2">
+              <p className="text-[#22242C] dark:text-gray-50 text-lg font-semibold">
+                Artisan Aisle
+              </p>
+              <ProgressBar value={35} color="cyan" tooltip="35" />
+              <span className="flex justify-between">
+                <p className="text-[#525252] dark:text-gray-100 text-lg font-normal">
+                  {" "}
+                  $1,800,000
                 </p>
-                <ProgressBar value={35} color="cyan" tooltip="35" />
-                <span className="flex justify-between">
-                  <p className="text-[#525252] dark:text-gray-100 text-lg font-normal">
-                    {" "}
-                    $1,800,000
-                  </p>
-                  <p className="text-[#525252] dark:text-gray-100 text-lg font-normal">
-                    +10%
-                  </p>
-                </span>
-              </div>
+                <p className="text-[#525252] dark:text-gray-100 text-lg font-normal">
+                  +10%
+                </p>
+              </span>
+            </div>
 
-              <div className="space-y-2">
-                <p className="text-[#22242C] dark:text-gray-50 text-lg font-semibold">
-                  Toy Troop
+            <div className="space-y-2">
+              <p className="text-[#22242C] dark:text-gray-50 text-lg font-semibold">
+                Toy Troop
+              </p>
+              <ProgressBar value={25} color="yellow" tooltip="25" />
+              <span className="flex justify-between">
+                <p className="text-[#525252] dark:text-gray-100 text-lg font-normal">
+                  {" "}
+                  $1,200,000
                 </p>
-                <ProgressBar value={25} color="yellow" tooltip="25" />
-                <span className="flex justify-between">
-                  <p className="text-[#525252] dark:text-gray-100 text-lg font-normal">
-                    {" "}
-                    $1,200,000
-                  </p>
-                  <p className="text-[#525252] dark:text-gray-100 text-lg font-normal">
-                    +8%
-                  </p>
-                </span>
-              </div>
+                <p className="text-[#525252] dark:text-gray-100 text-lg font-normal">
+                  +8%
+                </p>
+              </span>
+            </div>
 
-              <div className="space-y-2">
-                <p className="text-[#22242C] dark:text-gray-50 text-lg font-semibold">
-                  XStore
+            <div className="space-y-2">
+              <p className="text-[#22242C] dark:text-gray-50 text-lg font-semibold">
+                XStore
+              </p>
+              <ProgressBar value={15} color="red" tooltip="15" />
+              <span className="flex justify-between">
+                <p className="text-[#525252] dark:text-gray-100 text-lg font-normal">
+                  {" "}
+                  $800,000
                 </p>
-                <ProgressBar value={15} color="red" tooltip="15" />
-                <span className="flex justify-between">
-                  <p className="text-[#525252] dark:text-gray-100 text-lg font-normal">
-                    {" "}
-                    $800,000
-                  </p>
-                  <p className="text-[#525252] dark:text-gray-100 text-lg font-normal">
-                    +6%
-                  </p>
-                </span>
-              </div>
-            </CardContent>
-          </Card>
-        </div>
+                <p className="text-[#525252] dark:text-gray-100 text-lg font-normal">
+                  +6%
+                </p>
+              </span>
+            </div>
+          </CardContent>
+        </Card>
       </div>
 
       {/* footer */}

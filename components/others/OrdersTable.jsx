@@ -20,10 +20,10 @@ import DownloadIcon from "@/assets/svg/DownloadIcon";
 const OrdersTable = () => {
   return (
     <div>
-      <Table className="w-full">
+      <Table className="w-full overflow-auto">
         <TableHeader>
           <TableRow>
-            <TableHead className="text-base text-[#9CA4AB] dark:text-gray-100 font-medium">
+            <TableHead className=" text-base text-[#9CA4AB] dark:text-gray-100 font-medium">
               Name
             </TableHead>
             <TableHead className="text-base text-[#9CA4AB] dark:text-gray-100 font-medium">
