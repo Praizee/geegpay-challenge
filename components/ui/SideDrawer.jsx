@@ -15,7 +15,7 @@ import Discount from "@/assets/svg/Discount";
 import InfoIcon from "@/assets/svg/InfoIcon";
 import Settings from "@/assets/svg/Settings";
 import Logout from "@/assets/svg/Logout";
-import { ThemeToggle } from "../others/theme-toggle";
+import ThemeToggler from "../others/theme-toggle";
 import ArrowRight from "@/assets/svg/ArrowRight";
 
 const SideDrawer = () => {
@@ -140,7 +140,7 @@ const SideDrawer = () => {
                   </Link>
 
                   {/* Toggle */}
-                  <ThemeToggle />
+                  <ThemeToggler />
                 </div>
 
                 <div className="w-full space-y-4">

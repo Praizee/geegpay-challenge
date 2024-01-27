@@ -1,11 +1,10 @@
 import { Plus_Jakarta_Sans } from "next/font/google";
 import "./globals.css";
-import { ThemeProvider } from "@/components/others/ThemeProvider";
 
 const Jarkata = Plus_Jakarta_Sans({ subsets: ["latin"] });
 
 export const metadata = {
-  metadataBase: new URL("https://stephen-adeniji.vercel.app/"),
+  metadataBase: new URL("https://geegpay-challenge.vercel.app/"),
 
   title: "Geegpay Analytics Dashboard",
   description: "GeegPay Challenge - (Analytics Dashboard)",
@@ -24,31 +23,12 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" suppressHydrationWarning>
-      <body className={`${Jarkata.className} !bg-[#FAFAFA] dark:!bg-gray-800`}>
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="light"
-          enableSystem
-          disableTransitionOnChange
-        >
-          {/* light, dark, system */}
-          {children}
-        </ThemeProvider>
+    <html lang="en">
+      <body
+        className={`${Jarkata.className} !bg-[#FAFAFA] dark:!bg-gray-800 text-[#26282C] dark:text-gray-50`}
+      >
+        {children}
       </body>
     </html>
   );
-}
-
-{
-  /* <html lang="en" suppressHydrationWarning>
-      <body className={outfit.className}>
-        <ThemeProvider attribute="class" defaultTheme="light">
-          <Header />
-          {children}
-          <BackToTopButton />
-          <Footer />
-        </ThemeProvider>
-      </body>
-    </html> */
 }

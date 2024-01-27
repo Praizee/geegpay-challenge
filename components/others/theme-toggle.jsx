@@ -1,44 +1,52 @@
 "use client";
 
-import * as React from "react";
+import { useState } from "react";
 import { useTheme } from "next-themes";
 
-import { Toggle } from "@/components/ui/toggle";
 import SunIcon from "@/assets/svg/SunIcon";
 import MoonIcon from "@/assets/svg/MoonIcon";
 
-export function ThemeToggle() {
+const ThemeToggler = () => {
   const { theme, setTheme } = useTheme();
+  const [isRotated, setRotated] = useState(false);
+  // const currentTheme = theme === "system" ? systemTheme : theme;
 
-  const toggleTheme = () => {
-    setTheme(theme === "dark" ? "light" : "dark");
+  const toggleTheme = () =>
+    theme == "dark" ? setTheme("light") : setTheme("dark");
+
+  const handleRotation = () => {
+    setRotated((isRotated) => !isRotated);
+    toggleTheme();
   };
 
   return (
-    <div className="bg-white dark:bg-inherit dark:border-white rounded-3xl px-1 py-2 space-y-6 border w-max">
-      <button
-        type="button"
-        className="block bg-[#34CAA5]  p-2 rounded-full w-max"
-        onClick={toggleTheme}
+    <div className="flex justify-center">
+      <div
+        className={`bg-white rounded-3xl px-1 py-2 space-y-5 border w-max ${
+          isRotated ? "rotate-180" : ""
+        }`}
       >
-        <SunIcon />
-      </button>
-      <button
-        type="button"
-        className="rounded-full block w-max focus:bg-[#34CAA5] p-1 mx-auto"
-        onClick={toggleTheme}
-      >
-        <MoonIcon />
-      </button>
+        <button
+          onClick={handleRotation}
+          className={`block p-2 rounded-full w-max ${
+            isRotated ? "bg-[#34CAA5]" : "bg-green-200"
+          }`}
+        >
+          <SunIcon />
+        </button>
+        <button
+          onClick={handleRotation}
+          className="rounded-full block w-max mx-auto transform rotate-180"
+        >
+          <MoonIcon />
+        </button>
+      </div>
     </div>
   );
-}
+};
 
-// //  <div className="flex items-center justify-center h-screen bg-gray-100 dark:bg-gray-900">
-// //     <Toggle aria-label="Toggle dark mode" variant="outline">
-// //       <SunIcon className="mr-2 h-4 w-4 dark:hidden" />
-// //       <MoonIcon className="mr-2 h-4 w-4 hidden dark:block" />
-// //       <span className="dark:hidden">Light Mode</span>
-// //       <span className="hidden dark:block">Dark Mode</span>
-// //     </Toggle>
-// //   </div>
+export default ThemeToggler;
+
+{
+  /* <div className="bg-white dark:bg-inherit dark:border-white rounded-3xl px-1 py-2 space-y-6 border w-max"></div> */
+}

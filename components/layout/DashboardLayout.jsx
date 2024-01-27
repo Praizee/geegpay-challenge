@@ -32,7 +32,7 @@ import { IoChevronDown } from "react-icons/io5";
 import { LuCalendarDays } from "react-icons/lu";
 import { HiOutlineBell } from "react-icons/hi2";
 import Dashboard from "../dashboard/Dashboard";
-import { ThemeToggle } from "../others/theme-toggle";
+import ThemeToggler from "../others/theme-toggle";
 
 const DashboardLayout = () => {
   const date = new Date();
@@ -157,7 +157,7 @@ const DashboardLayout = () => {
                 ))}
 
                 {/* Toggle */}
-                <ThemeToggle />
+                <ThemeToggler />
               </div>
 
               <div className="w-full space-y-4">
@@ -214,7 +214,7 @@ const DashboardLayout = () => {
       </div>
       {/* end of sider */}
 
-      <div className="flex flex-col flex-1">
+      <div className="flex flex-col flex-1 w-screen lg:w-auto">
         {/* navbar */}
         <header className="flex h-16 items-center sticky top-0 z-30 gap-4 border-b border-[#E5EAEF] dark:border-white/40 px-4 bg-[#F7F8FA] dark:bg-gray-800">
           <div className="lg:hidden flex gap-2">
@@ -229,7 +229,7 @@ const DashboardLayout = () => {
             <h1 className="font-semibold text-lg md:text-xl">Dashboard</h1>
 
             <div className="flex gap-4">
-              <form className="w-full invisible md:visible">
+              <form className="w-full hidden lg:flex">
                 <div className="relative">
                   <SearchIcon className="absolute left-2.5 top-3.5 h-[1.125rem] w-[1.125rem] text-gray-500 dark:text-gray-400" />
                   <Input
@@ -241,7 +241,7 @@ const DashboardLayout = () => {
                 </div>
               </form>
 
-              <div className="w-full flex gap-2 invisible lg:visible py-3">
+              <div className="w-full gap-2 hidden lg:flex py-3">
                 <LuCalendarDays className="h-6 w-6 text-[#26282C] dark:text-gray-50" />
                 <p className="text-[#26282C] dark:text-gray-50 font-medium">
                   {date.toLocaleString("en-US", {
@@ -252,7 +252,7 @@ const DashboardLayout = () => {
                 </p>
               </div>
 
-              <div className="py-1 mt-2 md:mt-0">
+              <div className="py-1 mt-2 lg:mt-0">
                 <Button className="h-10 w-10" size="icon" variant="outline">
                   {/* <Notification className="h-4 w-4 text-[#0D062D] transition-all hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-50" /> */}
                   <HiOutlineBell className="h-6 w-6 text-[#0D062D] bg-transparent transition-all hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-50" />
@@ -261,7 +261,7 @@ const DashboardLayout = () => {
               </div>
 
               {/* Avatar */}
-              <div className="min-w-[13rem] max-h-[3.25rem] mt-2 md:mt-0 rounded-full border border-[#DADDDD] p-1 cursor-pointer">
+              <div className="lg:min-w-[13rem] max-h-[3.25rem] mt-2 lg:mt-0 rounded-full border border-[#DADDDD] p-1 cursor-pointer">
                 <DropdownMenu>
                   <DropdownMenuTrigger asChild>
                     <div className="flex gap-2">
@@ -271,7 +271,7 @@ const DashboardLayout = () => {
                         // object-cover aspect-square
                         src={Avatar}
                       />
-                      <span>
+                      <span className="hidden lg:block">
                         <p className="text-base text-[#26282C] dark:text-gray-50">
                           Justin Bergson
                         </p>

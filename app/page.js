@@ -1,11 +1,13 @@
-import DashboardLayout from "@/components/layout/DashboardLayout";
-import { ThemeProvider } from "@/components/others/ThemeProvider";
 import React from "react";
+import { ThemeProvider } from "next-themes";
 
-const page = ({ pageProps }) => {
+import DashboardLayout from "@/components/layout/DashboardLayout";
+
+const page = () => {
   return (
-    <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-      <DashboardLayout {...pageProps} />
+    <ThemeProvider attribute="class" defaultTheme="system">
+      {/* enableSystem */}
+      <DashboardLayout />
     </ThemeProvider>
   );
 };
