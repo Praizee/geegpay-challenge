@@ -1,18 +1,15 @@
 "use client";
 
-import { useState } from "react";
-import { useTheme } from "next-themes";
+// theme-toggler.js
+import React, { useState } from "react";
+import { useTheme } from "./ThemeProvider";
 
 import SunIcon from "@/assets/svg/SunIcon";
 import MoonIcon from "@/assets/svg/MoonIcon";
 
 const ThemeToggler = () => {
-  const { theme, setTheme } = useTheme();
+  const { theme, toggleTheme } = useTheme();
   const [isRotated, setRotated] = useState(false);
-  // const currentTheme = theme === "system" ? systemTheme : theme;
-
-  const toggleTheme = () =>
-    theme == "dark" ? setTheme("light") : setTheme("dark");
 
   const handleRotation = () => {
     setRotated((isRotated) => !isRotated);
@@ -20,7 +17,7 @@ const ThemeToggler = () => {
   };
 
   return (
-    <div className="flex justify-center">
+    <div className="flex justify-center w-max">
       <div
         className={`bg-white rounded-3xl px-1 py-2 space-y-5 border w-max ${
           isRotated ? "rotate-180" : ""

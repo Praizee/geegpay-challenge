@@ -1,15 +1,14 @@
 import React from "react";
-import { ThemeProvider } from "next-themes";
 
+import { ThemeProvider } from "@/components/others/ThemeProvider";
 import DashboardLayout from "@/components/layout/DashboardLayout";
 
-const page = () => {
+const Page = () => {
   return (
-    <ThemeProvider attribute="class" defaultTheme="system">
-      {/* enableSystem */}
+    <ThemeProvider>
       <DashboardLayout />
     </ThemeProvider>
   );
 };
 
-export default page;
+export default Page;
