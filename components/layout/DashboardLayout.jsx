@@ -252,7 +252,7 @@ const DashboardLayout = () => {
                 </p>
               </div>
 
-              <div className="py-1 mt-2 lg:mt-0">
+              <div className="py-1 mt-2 lg:mt-0 hidden md:flex">
                 <Button className="h-10 w-10" size="icon" variant="outline">
                   {/* <Notification className="h-4 w-4 text-[#0D062D] transition-all hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-50" /> */}
                   <HiOutlineBell className="h-6 w-6 text-[#0D062D] bg-transparent transition-all hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-50" />
