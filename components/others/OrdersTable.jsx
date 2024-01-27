@@ -15,6 +15,7 @@ import U2 from "../../assets/png/U2.png";
 import U3 from "../../assets/png/U3.png";
 import U4 from "../../assets/png/U4.png";
 import U5 from "../../assets/png/U5.png";
+import DownloadIcon from "@/assets/svg/DownloadIcon";
 
 const OrdersTable = () => {
   return (
@@ -22,11 +23,21 @@ const OrdersTable = () => {
       <Table className="w-full">
         <TableHeader>
           <TableRow>
-            <TableHead className="">Name</TableHead>
-            <TableHead>Date</TableHead>
-            <TableHead>Amount</TableHead>
-            <TableHead>Status</TableHead>
-            <TableHead className="w-[120px]">Invoice</TableHead>
+            <TableHead className="text-base text-[#9CA4AB] dark:text-gray-100 font-medium">
+              Name
+            </TableHead>
+            <TableHead className="text-base text-[#9CA4AB] dark:text-gray-100 font-medium">
+              Date
+            </TableHead>
+            <TableHead className="text-base text-[#9CA4AB] dark:text-gray-100 font-medium">
+              Amount
+            </TableHead>
+            <TableHead className="text-base text-[#9CA4AB] dark:text-gray-100 font-medium">
+              Status
+            </TableHead>
+            <TableHead className="text-base text-[#9CA4AB] dark:text-gray-100 font-medium">
+              Invoice
+            </TableHead>
           </TableRow>
         </TableHeader>
 
@@ -47,12 +58,21 @@ const OrdersTable = () => {
                 Marcus Bergson
               </p>
             </TableCell>
-            <TableCell>Jan 24, 2024</TableCell>
-            <TableCell className="font-medium">TXN001</TableCell>
+            <TableCell className="text-base text-[#737373] dark:text-gray-200 font-normal">
+              Nov 15, 2023
+            </TableCell>
+            <TableCell className="font-medium text-base">$80,000</TableCell>
             <TableCell className="text-[#34CAA5] text-base font-normal ">
               Paid
             </TableCell>{" "}
-            <TableCell>$250.00</TableCell>
+            <TableCell className="">
+              <button className="hover:text-blue-400 text-sm flex gap-2 text-[#0D062D] dark:text-gray-100 font-normal">
+                <span className="py-1">
+                  <DownloadIcon className="w-5 h-5 pt-1" />
+                </span>
+                View
+              </button>
+            </TableCell>
           </TableRow>
 
           <TableRow>
@@ -68,15 +88,24 @@ const OrdersTable = () => {
                 <AvatarFallback>U2</AvatarFallback>
               </Avatar>
               <p className="py-1 text-base text-[#3A3F51] dark:text-gray-100 font-medium">
-                Marcus Bergson
+                Jaydon Vaccaro
               </p>
             </TableCell>
-            <TableCell>Jan 24, 2024</TableCell>
-            <TableCell className="font-medium">TXN001</TableCell>
+            <TableCell className="text-base text-[#737373] dark:text-gray-200 font-normal">
+              Nov 15, 2023
+            </TableCell>
+            <TableCell className="font-medium text-base">$80,000</TableCell>
             <TableCell className="text-[#ED544E] text-base font-normal ">
               Refund
             </TableCell>
-            <TableCell>$150.00</TableCell>
+            <TableCell>
+              <button className="hover:text-blue-400 text-sm flex gap-2 text-[#0D062D] dark:text-gray-100 font-normal">
+                <span className="py-1">
+                  <DownloadIcon className="w-5 h-5 pt-1" />
+                </span>
+                View
+              </button>
+            </TableCell>
           </TableRow>
 
           <TableRow>
@@ -92,15 +121,24 @@ const OrdersTable = () => {
                 <AvatarFallback>U3</AvatarFallback>
               </Avatar>
               <p className="py-1 text-base text-[#3A3F51] dark:text-gray-100 font-medium">
-                Marcus Bergson
+                Corey Schleifer
               </p>
             </TableCell>
-            <TableCell>Jan 24, 2024</TableCell>
-            <TableCell className="font-medium">TXN001</TableCell>
+            <TableCell className="text-base text-[#737373] dark:text-gray-200 font-normal">
+              Nov 15, 2023
+            </TableCell>
+            <TableCell className="font-medium text-base">$80,000</TableCell>
             <TableCell className="text-[#34CAA5] text-base font-normal ">
               Paid
             </TableCell>
-            <TableCell>$350.00</TableCell>
+            <TableCell>
+              <button className="hover:text-blue-400 text-sm flex gap-2 text-[#0D062D] dark:text-gray-100 font-normal">
+                <span className="py-1">
+                  <DownloadIcon className="w-5 h-5 pt-1" />
+                </span>
+                View
+              </button>
+            </TableCell>
           </TableRow>
 
           <TableRow>
@@ -116,15 +154,24 @@ const OrdersTable = () => {
                 <AvatarFallback>U4</AvatarFallback>
               </Avatar>
               <p className="py-1 text-base text-[#3A3F51] dark:text-gray-100 font-medium">
-                Marcus Bergson
+                Cooper Press
               </p>
             </TableCell>
-            <TableCell>Jan 24, 2024</TableCell>
-            <TableCell className="font-medium">TXN001</TableCell>
+            <TableCell className="text-base text-[#737373] dark:text-gray-200 font-normal">
+              Nov 15, 2023
+            </TableCell>
+            <TableCell className="font-medium text-base">$80,000</TableCell>
             <TableCell className="text-[#ED544E] text-base font-normal ">
               Refund
             </TableCell>
-            <TableCell>$450.00</TableCell>
+            <TableCell>
+              <button className="hover:text-blue-400 text-sm flex gap-2 text-[#0D062D] dark:text-gray-100 font-normal">
+                <span className="py-1">
+                  <DownloadIcon className="w-5 h-5 pt-1" />
+                </span>
+                View
+              </button>
+            </TableCell>
           </TableRow>
 
           <TableRow>
@@ -140,15 +187,24 @@ const OrdersTable = () => {
                 <AvatarFallback>U5</AvatarFallback>
               </Avatar>
               <p className="py-1 text-base text-[#3A3F51] dark:text-gray-100 font-medium">
-                Marcus Bergson
+                Phillip Lubin
               </p>
             </TableCell>
-            <TableCell>Jan 24, 2024</TableCell>
-            <TableCell className="font-medium">TXN001</TableCell>
+            <TableCell className="text-base text-[#737373] dark:text-gray-200 font-normal">
+              Nov 15, 2023
+            </TableCell>
+            <TableCell className="font-medium text-base">$80,000</TableCell>
             <TableCell className="text-[#34CAA5] text-base font-normal ">
               Paid
             </TableCell>
-            <TableCell>$450.00</TableCell>
+            <TableCell>
+              <button className="hover:text-blue-400 text-sm flex gap-2 text-[#0D062D] dark:text-gray-100 font-normal">
+                <span className="py-1">
+                  <DownloadIcon className="w-5 h-5 pt-1" />
+                </span>
+                View
+              </button>
+            </TableCell>
           </TableRow>
         </TableBody>
       </Table>
