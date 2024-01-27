@@ -4,10 +4,10 @@ import React, { useState } from "react";
 import Link from "next/link";
 
 import { Drawer, Space } from "antd";
+import { RxHamburgerMenu } from "react-icons/rx";
+import { MdOutlineCancel } from "react-icons/md";
 
-import Logo from "@/assets/svg/Logo";
 import DashboardIcon from "@/assets/svg/DashboardIcon";
-import Avatar from "@/assets/png/profile.png";
 import Trend from "@/assets/svg/Trend";
 import People from "@/assets/svg/People";
 import Box from "@/assets/svg/Box";
@@ -15,7 +15,6 @@ import Discount from "@/assets/svg/Discount";
 import InfoIcon from "@/assets/svg/InfoIcon";
 import Settings from "@/assets/svg/Settings";
 import Logout from "@/assets/svg/Logout";
-import { RxHamburgerMenu } from "react-icons/rx";
 import { ThemeToggle } from "../others/theme-toggle";
 import ArrowRight from "@/assets/svg/ArrowRight";
 
@@ -60,9 +59,12 @@ const SideDrawer = () => {
         <div className="w- p-0 top-0 bottom-0  left-0 sticky h-full overflow-auto bg-[#F7F8FA] dark:bg-gray-800 transition-all duration-300 ease-in-out">
           <div className="flex h-full max-h-screen flex-col gap-2">
             <div className="flex h-[60px] items-center border-b border-[#E5EAEF] dark:border-white/40  px-6">
-              <Link className="flex items-center gap-2 font-semibold" href="/">
-                <Logo className="h-10 w-10" />
-              </Link>
+              <button
+                onClick={onClose}
+                className="text-2xl font-semibold text-gray-600 dark:text-gray-50"
+              >
+                <MdOutlineCancel className="w-7 h-7" />
+              </button>
             </div>
             <div className="flex-1 overflow-auto">
               <nav className="flex flex-col h-full justify-between items-start px-4 text-sm font-medium space-y-4">

@@ -1,6 +1,6 @@
 import React from "react";
 import Link from "next/link";
-import { Flex, ProgressBar, Text } from "@tremor/react";
+import { ProgressBar } from "@tremor/react";
 
 import { CardTitle, CardHeader, CardContent, Card } from "@/components/ui/card";
 import OrderIcon from "@/assets/svg/OrderIcon";
@@ -14,34 +14,52 @@ import SalesGraph from "@/assets/svg/SalesGraph";
 import IncomeIcon from "@/assets/svg/IncomeIcon";
 import IncomeGraph from "@/assets/svg/IncomeGraph";
 import CustomBarChart from "../others/CustomBarChart";
-import { BarChartGraph } from "../others/BarChartGraph";
 import OrdersTable from "../others/OrdersTable";
 
 const Dashboard = () => {
   return (
-    <main className="flex flex-1 flex-col gap-4 p-4 md:gap-8 md:p-6 z-10">
+    <main className="fle flex-1 flex-co gap-4 p-4 md:gap-8 md:p-6 z-10">
       <div className="space-y-6">
         {/* charts */}
-        <div className="lg:flex gap-6">
+        <div className="lg:flex gap-6 space-y-6 lg:space-y-0">
           <Card className="flex flex-1 flex-col ">
             {/* max-w-[50rem] */}
             <CardHeader>
-              <CardTitle>Sales Trends</CardTitle>
+              <CardTitle className="text-lg font-semibold text-[#26282C] dark:text-gray-50 flex justify-between">
+                Sales Trends
+                <span className="space-x-2 text-sm font-medium">
+                  <label for="period">Sort by:</label>
+                  <select
+                    name="period"
+                    id="period"
+                    className="bg-transparent  border border-[#E1DFDF] dark:border-gray-100 rounded-3xl px-3 py-1 text-sm font-medium"
+                  >
+                    <option value="weekly" className="dark:bg-gray-800">
+                      Weekly
+                    </option>
+                    <option value="monthly" className="dark:bg-gray-800">
+                      Monthly
+                    </option>
+                    <option value="yearly" className="dark:bg-gray-800">
+                      Yearly
+                    </option>
+                  </select>
+                </span>
+              </CardTitle>
             </CardHeader>
             <CardContent>
-              {/* <BarChartGraph className="aspect-[4/3]" /> */}
               <CustomBarChart />
             </CardContent>
           </Card>
 
-          <div className="flex-none grid md:grid-cols-2 gap-6">
+          <div className="flex-none lg:mt-0 grid grid-cols-2 gap-6">
             {/* order */}
             <div className="space-y-2 max-w-[16rem] bg-white dark:bg-black/50 border border-[#EDF2F7] dark:border-[#EDF2F7]/50 p-4 rounded-[0.875rem]">
               <span className="flex gap-4 justify-between">
                 <OrderIcon className="w-5 h-5" />
                 <OrderGraph />
               </span>
-              <p className="text-[#898989] dark:text-gray-20 font-medium text-lg">
+              <p className="text-[#898989] dark:text-gray-200 font-medium text-lg">
                 Total Order
               </p>
               <p className="text-[#3A3F51] dark:text-gray-50 font-semibold text-2xl">
@@ -61,7 +79,7 @@ const Dashboard = () => {
                 <RefundIcon className="w-5 h-5" />
                 <RefundGraph />
               </span>
-              <p className="text-[#898989] dark:text-gray-20 font-medium text-lg">
+              <p className="text-[#898989] dark:text-gray-200 font-medium text-lg">
                 Total Refund
               </p>
               <p className="text-[#3A3F51] dark:text-gray-50 font-semibold text-2xl">
@@ -81,7 +99,7 @@ const Dashboard = () => {
                 <SalesIcon className="w-5 h-5" />
                 <SalesGraph />
               </span>
-              <p className="text-[#898989] dark:text-gray-20 font-medium text-lg">
+              <p className="text-[#898989] dark:text-gray-200 font-medium text-lg">
                 Average Sales
               </p>
               <p className="text-[#3A3F51] dark:text-gray-50 font-semibold text-2xl">
@@ -101,7 +119,7 @@ const Dashboard = () => {
                 <IncomeIcon className="w-5 h-5" />
                 <IncomeGraph />
               </span>
-              <p className="text-[#898989] dark:text-gray-20 font-medium text-lg">
+              <p className="text-[#898989] dark:text-gray-200 font-medium text-lg">
                 Total Income
               </p>
               <p className="text-[#3A3F51] dark:text-gray-50 font-semibold text-2xl">
@@ -117,7 +135,7 @@ const Dashboard = () => {
           </div>
         </div>
 
-        <div className="lg:flex gap-6">
+        <div className="lg:flex gap-6 space-y-6 lg:space-y-0">
           <Card className="flex flex-1 flex-col">
             {/* w-[50rem] */}
             <CardHeader>
@@ -211,7 +229,7 @@ const Dashboard = () => {
       </div>
 
       {/* footer */}
-      <div className="">
+      <div className="pt-4">
         <p className="text-center text-[#26282C] dark:text-gray-50">
           Geegpay ©{new Date().getFullYear()} Created by{" "}
           <Link

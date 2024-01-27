@@ -36,12 +36,70 @@ import { ThemeToggle } from "../others/theme-toggle";
 
 const DashboardLayout = () => {
   const date = new Date();
-  const [rotation, setRotation] = useState(180);
-  const isSidebarCollapsed = rotation !== 0;
+  const [rotation, setRotation] = useState(0);
+  const isSidebarCollapsed = rotation === 0;
 
   const handleClick = () => {
     setRotation((prevRotation) => (prevRotation + 180) % 360);
     // Add other stuff you want to do on click here
+  };
+
+  const links = [
+    {
+      id: "dashboard",
+      label: "Home",
+      icon: (
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          className="hover:scale-110 animation duration-200"
+        >
+          <path
+            className="fill-[#0D062D] dark:fill-slate-200"
+            d="M7.24 2H5.34C3.15 2 2 3.15 2 5.33V7.23C2 9.41 3.15 10.56 5.33 10.56H7.23C9.41 10.56 10.56 9.41 10.56 7.23V5.33C10.57 3.15 9.42 2 7.24 2Z"
+          ></path>
+          <path
+            opacity="0.4"
+            d="M18.6699 2H16.7699C14.5899 2 13.4399 3.15 13.4399 5.33V7.23C13.4399 9.41 14.5899 10.56 16.7699 10.56H18.6699C20.8499 10.56 21.9999 9.41 21.9999 7.23V5.33C21.9999 3.15 20.8499 2 18.6699 2Z"
+            className="fill-[#0D062D] dark:fill-slate-500"
+          ></path>
+          <path
+            d="M18.6699 13.4301H16.7699C14.5899 13.4301 13.4399 14.5801 13.4399 16.7601V18.6601C13.4399 20.8401 14.5899 21.9901 16.7699 21.9901H18.6699C20.8499 21.9901 21.9999 20.8401 21.9999 18.6601V16.7601C21.9999 14.5801 20.8499 13.4301 18.6699 13.4301Z"
+            className="fill-[#0D062D] dark:fill-slate-200"
+          ></path>
+          <path
+            opacity="0.4"
+            d="M7.24 13.4301H5.34C3.15 13.4301 2 14.5801 2 16.7601V18.6601C2 20.8501 3.15 22.0001 5.33 22.0001H7.23C9.41 22.0001 10.56 20.8501 10.56 18.6701V16.7701C10.57 14.5801 9.42 13.4301 7.24 13.4301Z"
+            className="fill-[#0D062D] dark:fill-slate-500"
+          ></path>
+        </svg>
+      ),
+      // <DashboardIcon className="h-4 w-4" />
+    },
+    { id: "trends", label: "Trends", icon: <Trend className="h-4 w-4" /> },
+    {
+      id: "customers",
+      label: "Customers",
+      icon: <People className="h-4 w-4" />,
+    },
+    { id: "products", label: "Products", icon: <Box className="h-4 w-4" /> },
+    {
+      id: "discounts",
+      label: "Discounts",
+      icon: <Discount className="h-4 w-4" />,
+    },
+    { id: "info", label: "Info", icon: <InfoIcon className="h-4 w-4" /> },
+    // Add more links as needed
+  ];
+
+  //  active links
+  const [activeLink, setActiveLink] = useState(links[0].id); // sets the first link active
+
+  const handleLinkClick = (link) => {
+    setActiveLink(link);
   };
 
   return (
@@ -61,78 +119,23 @@ const DashboardLayout = () => {
           <div className="flex-1 overflow-auto py-2">
             <nav className="flex flex-col h-full justify-between items-start px-4 text-sm font-medium">
               <div className="w-full space-y-4">
-                <Link
-                  className="flex items-center gap-3 text-base rounded-lg px-3 py-2 text-gray-500 transition-all hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-50"
-                  href="#"
-                >
-                  <DashboardIcon className="h-4 w-4" />
-                  <p
-                    className={`${isSidebarCollapsed ? "hidden" : "block"}
-                  `}
+                {links.map((link) => (
+                  <Link
+                    key={link.id}
+                    className={`flex items-center gap-3 text-base rounded-lg px-3 py-2 text-gray-500 transition-all hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-50 ${
+                      activeLink === link.id
+                        ? "border-r-4 border-[#0D062D]"
+                        : ""
+                    }`}
+                    href="#"
+                    onClick={() => handleLinkClick(link.id)}
                   >
-                    Home
-                  </p>
-                </Link>
-                <Link
-                  className="flex items-center gap-3 text-base rounded-lg px-3 py-2 text-gray-500 transition-all hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-50"
-                  href="#"
-                >
-                  <Trend className="h-4 w-4" />
-                  <p
-                    className={`${isSidebarCollapsed ? "hidden" : "block"}
-                  `}
-                  >
-                    Trends
-                  </p>
-                </Link>
-                <Link
-                  className="flex items-center gap-3 text-base rounded-lg px-3 py-2 text-gray-500 transition-all hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-50"
-                  href="#"
-                >
-                  <People className="h-4 w-4" />
-                  <p
-                    className={`${isSidebarCollapsed ? "hidden" : "block"}
-                  `}
-                  >
-                    Customers
-                  </p>
-                </Link>
-                <Link
-                  className="flex items-center gap-3 text-base rounded-lg px-3 py-2 text-gray-500 transition-all hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-50"
-                  href="#"
-                >
-                  <Box className="h-4 w-4" />
-                  <p
-                    className={`${isSidebarCollapsed ? "hidden" : "block"}
-                  `}
-                  >
-                    Products
-                  </p>
-                </Link>
-                <Link
-                  className="flex items-center gap-3 text-base rounded-lg px-3 py-2 text-gray-500 transition-all hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-50"
-                  href="#"
-                >
-                  <Discount className="h-4 w-4" />
-                  <p
-                    className={`${isSidebarCollapsed ? "hidden" : "block"}
-                  `}
-                  >
-                    Discounts
-                  </p>
-                </Link>
-                <Link
-                  className="flex items-center gap-3 text-base rounded-lg px-3 py-2 text-gray-500 transition-all hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-50"
-                  href="#"
-                >
-                  <InfoIcon className="h-4 w-4" />
-                  <p
-                    className={`${isSidebarCollapsed ? "hidden" : "block"}
-                  `}
-                  >
-                    Info
-                  </p>
-                </Link>
+                    {link.icon}
+                    <p className={`${isSidebarCollapsed ? "hidden" : "block"}`}>
+                      {link.label}
+                    </p>
+                  </Link>
+                ))}
 
                 {/* Toggle */}
                 <ThemeToggle />
@@ -154,26 +157,30 @@ const DashboardLayout = () => {
                 </Link>
                 {/* end of expand/collapse */}
                 <Link
-                  className="flex items-center gap-3 text-base rounded-lg px-3 py-2 text-gray-500 transition-all hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-50"
+                  className={`flex items-center gap-3 text-base rounded-lg px-3 py-2 text-gray-500 transition-all hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-50 ${
+                    activeLink === "settings"
+                      ? "border-r-[3px] border-[#0D062D] dark:border-gray-100"
+                      : ""
+                  }`}
                   href="#"
+                  onClick={() => handleLinkClick("settings")}
                 >
                   <Settings className="h-4 w-4" />
-                  <p
-                    className={`${isSidebarCollapsed ? "hidden" : "block"}
-                  `}
-                  >
+                  <p className={`${isSidebarCollapsed ? "hidden" : "block"}`}>
                     Settings
                   </p>
                 </Link>
                 <Link
-                  className="flex items-center gap-3 text-base rounded-lg px-3 py-2 text-gray-500 transition-all hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-50"
+                  className={`flex items-center gap-3 text-base rounded-lg px-3 py-2 text-gray-500 transition-all hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-50 ${
+                    activeLink === "logout"
+                      ? "border-r-[3px] border-[#0D062D] dark:border-gray-100"
+                      : ""
+                  }`}
                   href="#"
+                  onClick={() => handleLinkClick("logout")}
                 >
                   <Logout className="h-4 w-4" />
-                  <p
-                    className={`${isSidebarCollapsed ? "hidden" : "block"}
-                  `}
-                  >
+                  <p className={`${isSidebarCollapsed ? "hidden" : "block"}`}>
                     Logout
                   </p>
                 </Link>
